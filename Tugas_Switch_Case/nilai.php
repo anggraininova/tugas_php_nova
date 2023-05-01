@@ -1,20 +1,74 @@
-<?php
-$nilai = 80;
-switch($nilai){
-    case(($nilai >=90) && ($nilai<=100)) :
-        $index = "A";
-        break;
+<!doctype html>
+<html lang="en">
+  <head>    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Kalkulator BMI!</title>
+</head>
+<body>
     
-    case(($nilai>=80) && ($nilai<90)) :
-        $index = "B";
-        break;
+    <div class="container d-flex justify-content-center">
+        <div class="card mt-4" style="width:18rem">
+            <div class="card-header">Kategori Nilai</div>
+            <div class="card-body">
+                <form action="" method="get">
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" class="form-control form-control-sm" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nilai</label>
+                        <input type="number" class="form-control form-control-sm" name="nilai" required>
+                    </div>
+                    <button type="submit" name="proses" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+            </div>
+            
+            <?php
+                
+                if(isset($_GET['proses'])){
+                    $nama = $_GET["nama"];
+                    $nilai = $_GET['nilai'];
 
-    case(($nilai>=70) && ($nilai<80)) :
-        $index = "C";
-        break;
+                    switch($nilai){
+                        case(($nilai >=90) && ($nilai<=100)) :
+                            $index = "A";
+                            break;
+                        
+                        case(($nilai>=80) && ($nilai<90)) :
+                            $index = "B";
+                            break;
+                    
+                        case(($nilai>=70) && ($nilai<80)) :
+                            $index = "C";
+                            break;
+                    
+                        default:
+                        $index = "D";
+                    }
+                        echo'
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                           Nama : '.$nama.' <br> Nilai : '.$nilai.' <br> Grade : '.$index.'
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    ';
+                    }
+                    
+            ?>
+        </div>
+    </div>
+    
 
-    default:
-    $index = "D";
-}
-echo "Anda mendapatkan : $nilai <br> dikonversi menjadi : '$index'";
-echo "<br>";
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>
